@@ -1,0 +1,57 @@
+/* Add this to your mission.css or update your existing CSS file */
+.mission_hero {
+   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+     url("../assets/images/missionhero.jpg") no-repeat center center;
+   background-size: cover;
+   height: 300px;
+   display: flex;
+   align-items: flex-end; /* Align the text to the bottom */
+   padding: 20px; /* Add padding to give space between text and edges */
+   padding-left: 20%;
+ }
+ 
+ .mission_hero h1 {
+   font-size: 2.5rem;
+   font-weight: 900;
+   color: #fff;
+   margin: 0; /* Remove default margin for h1 to align with bottom-left corner */
+ }
+ 
+ .section_three img,
+.section_four img,
+.section_five img {
+  border-radius: 20px; /* Add border radius of 20px to the images */
+  width: 60%; /* Reduce the image width by 20% */
+  height: auto; /* Maintain the aspect ratio */
+  display: block; /* Remove any extra spacing below the images */
+  margin: 0 auto; /* Center the images within their containers */
+}
+
+
+.section_five img {
+   padding-bottom: 40%;
+}
+
+.mission_one,
+.section_two {
+  text-align: center; /* Center align the text */
+}
+
+.mission_one h4,
+.section_two h4 {
+  font-size: 1.5rem; /* Set the font size to h4 size */
+  margin: 0; /* Remove default margin for h4 */
+}
+
+
+
+
+
+
+.divider {
+   
+   width: 50%; /* Set the divider width to 50% */
+   height: 0.2px; /* Set the divider thickness to 2px */
+   background-color: #bfbfbf; /* Set the divider color to black */
+   margin: 70px auto; /* Center the divider within its container and add some margin */
+ }
