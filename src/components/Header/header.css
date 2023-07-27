@@ -44,7 +44,7 @@
 /* ========== make it responsive ========= */
 @media only screen and (max-width: 992px) {
   .logo img {
-    width: 20%;
+    width: 100%;
   }
 
   .navigation {
@@ -82,7 +82,7 @@
 
 @media only screen and (max-width: 768px) {
   .logo img {
-    width: 45%;
+    width: 100%;
   }
 
   .menu {

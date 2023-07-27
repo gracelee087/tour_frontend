@@ -52,18 +52,18 @@
     border-radius: 2rem;
   }
 
-  .search__bar form {
+  /* .search__bar form {
     flex-wrap: wrap;
-  }
+  } */
 
   .search__bar form .form__group {
-    width: 48%;
+    width: 20%;
   }
 }
 
 @media only screen and (max-width: 576px) {
   .search__bar form .form__group {
-    width: 100%;
+    width: 40%;
   }
 
   .form__group input {

@@ -41,5 +41,60 @@
 
 
 
+/* Add custom styles for images */
+.box2 img,
+.box3 img,
+.box4 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-height: 120vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: filter 0.3s ease-in-out;
+}
+
+.box2 img:hover,
+.box3 img:hover,
+.box4 img:hover {
+  filter: brightness(110%); /* Increase the brightness for a more dramatic hover effect */
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  font-weight: bolder;
+  color: white;
+  z-index: 1; /* Ensures the title appears above the images */
+}
+
+/* Add custom styles for the articleBox content */
+.articleBox {
+  padding: 15px;
+}
+
+.articleBox .col {
+  margin: 5px;
+}
+
+@media only screen and (max-width: 992px) {
+  .storyBox-1 {
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+  }
+
+  .articleBox {
+    grid-template-columns: 1fr;
+    gap: 15px; /* Add a gap between rows on medium-sized screens */
+    padding: 15px; /* Add padding on medium-sized screens */
+  }
+
+  .articleBox .col {
+    height: auto;
+  }
+}
 
  
