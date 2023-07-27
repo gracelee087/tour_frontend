@@ -26,10 +26,8 @@ const TourDetails = () => {
     title,
     desc,
     price,
-
     reviews,
     city,
-
     maxGroupSize,
   } = tour;
 
@@ -38,14 +36,18 @@ const TourDetails = () => {
   // format date
   const options = { day: "numeric", month: "long", year: "numeric" };
 
+  // State to hold the reviews data
+  const [reviewsData, setReviewsData] = useState([]);
+
   // submit request to the server
-  const submitHandler = async e => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     const reviewText = reviewMsgRef.current.value;
 
     try {
       if (!user || user === undefined || user === null) {
         alert("Please sign in");
+        return;
       }
 
       const reviewObj = {
@@ -55,14 +57,12 @@ const TourDetails = () => {
       };
 
       const token = localStorage.getItem("token");
-      console.log(token)
       const res = await fetch(`${BASE_URL}/review/${id}`, {
         method: "post",
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-
         body: JSON.stringify(reviewObj),
       });
 
@@ -71,11 +71,25 @@ const TourDetails = () => {
         return alert(result.message);
       }
 
+      // After successfully adding a new review
+      // Update the state with the new review data
+      const newReview = {
+        ...reviewObj,
+        createdAt: new Date().toISOString(),
+      };
+      setReviewsData([...reviewsData, newReview]);
+
       alert(result.message);
     } catch (err) {
       alert(err.message);
     }
   };
+
+  useEffect(() => {
+    if (!loading && !error) {
+      setReviewsData(reviews); // Set the reviews data to the state variable
+    }
+  }, [loading, error, reviews]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -106,7 +120,7 @@ const TourDetails = () => {
                         {totalRating === 0 ? (
                           "Not rated"
                         ) : (
-                          <span>({reviews?.length})</span>
+                          <span>({reviewsData?.length})</span>
                         )}
                       </span>
                     </div>
@@ -130,7 +144,7 @@ const TourDetails = () => {
 
                   {/* ========== tour reviews section =========== */}
                   <div className="tour__reviews mt-4">
-                    <h4>Reviews ({reviews?.length} reviews)</h4>
+                    <h4>Reviews ({reviewsData?.length} reviews)</h4>
 
                     <Form onSubmit={submitHandler}>
                       <div className="d-flex align-items-center gap-3 mb-4 rating__group">
@@ -168,7 +182,7 @@ const TourDetails = () => {
                     </Form>
 
                     <ListGroup className="user__reviews">
-                      {reviews?.map((review, index) => (
+                      {reviewsData?.map((review, index) => (
                         <div className="review__item" key={index}>
                           <img src={avatar} alt="" />
 
@@ -177,9 +191,10 @@ const TourDetails = () => {
                               <div>
                                 <h5>{review.username}</h5>
                                 <p>
-                                  {new Date(
-                                    review.createdAt
-                                  ).toLocaleDateString("en-US", options)}
+                                  {new Date(review.createdAt).toLocaleDateString(
+                                    "en-US",
+                                    options
+                                  )}
                                 </p>
                               </div>
                               <span className="d-flex align-items-center">
