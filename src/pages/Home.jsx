@@ -25,6 +25,7 @@ const Home = () => {
                   <Subtitle subtitle={"Ready To Travel"} />
                 </div>
                 <h1>
+                  Sky is the limit. <br></br>
                   Traveling opens the door to creating
                   <span className="highlight"> memories</span>
                 </h1>
