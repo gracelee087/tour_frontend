@@ -1,9 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from "reactstrap";
 import "../styles/mission.css";
-import missionone from "../assets/images/missionone.jpg";
-import missiontwo from "../assets/images/missiontwo.jpg";
-import missionthree from "../assets/images/missionthree.jpg";
+
 
 
 
